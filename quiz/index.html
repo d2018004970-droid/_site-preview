@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O que está pedindo mais atenção em você? | Jornada de Si</title>
+  <meta name="description" content="Uma pausa para olhar para si, reconhecer seu momento atual e descobrir uma pequena prática de reflexão para levar consigo. Quiz gratuito da Jornada de Si.">
+  <meta property="og:title" content="O que está pedindo mais atenção em você?">
+  <meta property="og:description" content="Uma pausa para olhar para si e descobrir uma pequena prática de reflexão. Quiz gratuito da Jornada de Si, com a psicóloga Claudia Tilemann.">
+  <meta property="og:url" content="https://psiclaudiatilemann.com.br/quiz/">
+  <link rel="icon" href="https://psiclaudiatilemann.com.br/images/logo-topo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,600;0,700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Ir para o quiz</a>
+  <header class="site-header">
+    <div class="inner">
+      <a href="https://psiclaudiatilemann.com.br/" aria-label="Claudia Tilemann Psicóloga — página inicial">
+        <img src="https://psiclaudiatilemann.com.br/images/logo-topo.webp" alt="Claudia Tilemann Psicóloga" width="58" height="44">
+      </a>
+      <nav aria-label="Principal"><a href="https://psiclaudiatilemann.com.br/jornadadesi">Jornada de Si</a></nav>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <noscript><section class="screen center"><p>Para responder ao quiz, ative o JavaScript no seu navegador.</p></section></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <p style="margin:0">Psicóloga Claudia Tilemann · CRP 14/10201 · <a href="privacidade.html">Aviso de privacidade do quiz</a> · <a href="https://psiclaudiatilemann.com.br/politica-de-privacidade">Políticas de Privacidade</a></p>
+  </footer>
+
+  <script type="module">
+    import { mountQuiz } from './js/app.js';
+    mountQuiz(document.getElementById('app'));
+  </script>
+</body>
+</html>
