@@ -119,10 +119,10 @@ export async function handle(req, env, fetchImpl = fetch) {
             first_name: cleanName(name) || undefined,
             unsubscribed: false,
             segments: [{ id: env.RESEND_SEGMENT_ID }],
-            properties: [
-              { key: 'fase_quiz', value: phaseNames },
-              { key: 'fase_quiz_modo', value: result.mode }
-            ]
+            properties: {
+              fase_quiz: phaseNames,
+              fase_quiz_modo: result.mode
+            }
           })
         });
         marketing = r.ok ? 'saved' : 'failed';
