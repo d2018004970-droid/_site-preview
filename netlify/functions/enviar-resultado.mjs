@@ -10,7 +10,7 @@
  *   RESEND_SEGMENT_ID  (opcional)   segmento do Resend para quem autorizar conteúdos futuros
  *   ALLOWED_ORIGINS    (opcional)   origens aceitas, separadas por vírgula
  */
-import { resolveResult, isValidEmail, QUESTIONS, getPhase, QUIZ_VERSION, getProfile } from '../../quiz/js/core.js';
+import { resolveResult, isValidEmail, QUESTIONS, getPhase, QUIZ_VERSION, getProfile, OPTION_INDEX } from '../../quiz/js/core.js';
 import { buildEmail, cleanName } from '../../quiz/js/email.js';
 import { createHash } from 'node:crypto';
 
@@ -111,28 +111,50 @@ export async function handle(req, env, fetchImpl = fetch) {
   }
 
   // Consentimento separado para conteúdos futuros: não afeta o envio do resultado.
-  // Guardamos também a(s) fase(s) do resultado, para personalizar conteúdos futuros —
-  // está dentro da mesma finalidade/consentimento, não é um dado novo sendo coletado.
+  // Guardamos também a(s) fase(s) do resultado e as respostas de funil (p7-p10,
+  // sem pontuação, só personalização), para segmentar conteúdos futuros — tudo
+  // dentro da mesma finalidade/consentimento já descrita no aviso de privacidade
+  // do quiz (quiz/privacidade.html, seção "Autorização para conteúdos futuros").
+  //
+  // IMPORTANTE: o Resend exige que cada "contact property" customizada seja
+  // criada antes (dashboard > Contacts > Properties, ou API /contact-properties)
+  // para aceitar valores nela. fase_quiz/fase_quiz_modo já existem. Se as novas
+  // (quiz_formato/quiz_tempo/quiz_obstaculo/quiz_prontidao) ainda não tiverem
+  // sido criadas lá, a chamada abaixo falha — por isso tentamos com elas e,
+  // se der erro, tentamos de novo só com as duas antigas, para não quebrar o
+  // que já funcionava enquanto elas não forem configuradas no Resend.
   let marketing = 'not_requested';
   if (marketingConsent === true) {
     if (env.RESEND_SEGMENT_ID) {
       const phaseNames = result.phaseIds.map((id) => getPhase(id)?.name).filter(Boolean).join(', ');
+      const answerText = (id) => OPTION_INDEX[cleanAnswers[id]]?.text || undefined;
+      const basePayload = {
+        email: to,
+        first_name: cleanName(name) || undefined,
+        unsubscribed: false,
+        segments: [{ id: env.RESEND_SEGMENT_ID }]
+      };
+      const saveContact = (properties) => fetchImpl('https://api.resend.com/contacts', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...basePayload, properties })
+      });
       try {
-        const r = await fetchImpl('https://api.resend.com/contacts', {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: to,
-            first_name: cleanName(name) || undefined,
-            unsubscribed: false,
-            segments: [{ id: env.RESEND_SEGMENT_ID }],
-            properties: {
-              fase_quiz: phaseNames,
-              fase_quiz_modo: result.mode
-            }
-          })
+        const r = await saveContact({
+          fase_quiz: phaseNames,
+          fase_quiz_modo: result.mode,
+          quiz_formato: answerText('p7'),
+          quiz_tempo: answerText('p8'),
+          quiz_obstaculo: answerText('p9'),
+          quiz_prontidao: answerText('p10')
         });
-        marketing = r.ok ? 'saved' : 'failed';
+        if (r.ok) {
+          marketing = 'saved';
+        } else {
+          // Provavelmente as propriedades novas ainda não existem no Resend: tenta só com as antigas.
+          const r2 = await saveContact({ fase_quiz: phaseNames, fase_quiz_modo: result.mode });
+          marketing = r2.ok ? 'saved_partial' : 'failed';
+        }
       } catch {
         marketing = 'failed';
       }
