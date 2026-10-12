@@ -238,8 +238,8 @@ export function mountQuiz(root, deps = {}) {
           ${status.fieldError ? `<p class="field-error" id="f-email-err">${status.fieldError}</p>` : ''}
         </div>
         <div class="hp" aria-hidden="true"><label for="f-website">Não preencha</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <label class="check"><input type="checkbox" name="marketing"> <span>Quero receber, por e-mail, conteúdos e novidades de Claudia Tilemann sobre a Jornada de Si. <em>(Opcional. Você recebe seu resultado mesmo sem marcar.)</em></span></label>
-        <div class="privacy"><p>Usamos seu e-mail para enviar este resultado. Suas respostas servem apenas para calcular o resultado e personalizar o e-mail, e não ficam armazenadas. Você pode solicitar informações ou a exclusão dos seus dados a qualquer momento. <a href="privacidade.html" target="_blank" rel="noopener">Aviso de privacidade</a></p></div>
+        <label class="check"><input type="checkbox" name="marketing"> <span>Sim, quero continuar essa reflexão: me envie, de vez em quando, novas práticas para o meu momento atual. <em>(Sem spam, cancelo quando quiser, com 1 clique.)</em></span></label>
+        <div class="privacy"><p>Usamos seu e-mail para enviar este resultado, independentemente de você marcar a opção acima. Suas respostas servem apenas para calcular o resultado e personalizar o e-mail, e não ficam armazenadas. Você pode solicitar informações ou a exclusão dos seus dados a qualquer momento. <a href="privacidade.html" target="_blank" rel="noopener">Aviso de privacidade</a></p></div>
         <button class="btn" type="submit" style="width:100%" ${status.sending ? 'disabled aria-busy="true"' : ''}>
           ${status.sending ? '<span class="spinner" aria-hidden="true"></span> Enviando seu resultado…' : (status.error ? 'Tentar enviar novamente' : 'Quero receber meu resultado')}
         </button>
