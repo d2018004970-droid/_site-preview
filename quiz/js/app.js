@@ -2,9 +2,15 @@
  * Interface do quiz. Toda a pontuação vem de core.js (configuração central).
  * mountQuiz(root, { fetch, storage, endpoint }) — dependências injetáveis
  * para os testes de fluxo.
+ *
+ * VERSÃO 2: inclui as 3 telas intermediárias (sem pontuação, só texto),
+ * envia quizVersion ao servidor e trata a recusa por versão desatualizada
+ * (código "outdated"). Progresso salvo usa uma chave de sessão nova, para
+ * que respostas da versão 1 nunca sejam reaproveitadas.
  */
 import {
-  QUESTIONS, TOTAL_QUESTIONS, QUIZ_TITLE, OFFICIAL_URL, OPTION_INDEX,
+  QUESTIONS, TOTAL_QUESTIONS, QUIZ_TITLE, OFFICIAL_URL, OPTION_INDEX, QUIZ_VERSION,
+  INTERSTITIALS, interstitialAfter,
   computeScores, createSession, selectAnswer, isComplete, isValidEmail, getPhase
 } from './core.js';
 
@@ -19,7 +25,7 @@ const ICON = {
 
 const divider = (icon = ICON.heart) => `<div class="divider" aria-hidden="true"><span class="line"></span>${icon}<span class="line"></span></div>`;
 
-const STORAGE_KEY = 'jornada-quiz-v1';
+const STORAGE_KEY = 'jornada-quiz-v2';
 
 const ERROR_MESSAGES = {
   email: 'O endereço de e-mail não parece válido. Confira e tente novamente.',
@@ -28,6 +34,7 @@ const ERROR_MESSAGES = {
   provider_unreachable: 'Não conseguimos falar com o serviço de e-mail.',
   provider_no_id: 'O serviço de e-mail não confirmou o envio.',
   answers: 'Parece que alguma resposta ficou faltando. Revise suas respostas e tente novamente.',
+  outdated: 'O quiz foi atualizado enquanto você respondia. Recarregue a página e responda novamente, por favor.',
   network: 'Não foi possível conectar. Verifique sua internet.',
   default: 'Não foi possível enviar seu resultado agora.'
 };
@@ -64,7 +71,8 @@ export function mountQuiz(root, deps = {}) {
       // Descarta qualquer resposta que não exista na configuração atual.
       const answers = {};
       for (const q of QUESTIONS) if (OPTION_INDEX[s.answers[q.id]]?.questionId === q.id) answers[q.id] = s.answers[q.id];
-      return { answers, current: Math.min(Math.max(0, s.current | 0), TOTAL_QUESTIONS - 1), choice: s.choice, submissionId: null, screen: ['question', 'intro'].includes(s.screen) ? s.screen : 'intro' };
+      const validScreens = ['question', 'intro', 'tela-1', 'tela-2', 'tela-3'];
+      return { answers, current: Math.min(Math.max(0, s.current | 0), TOTAL_QUESTIONS - 1), choice: s.choice, submissionId: null, screen: validScreens.includes(s.screen) ? s.screen : 'intro' };
     } catch { return null; }
   }
   function clearStore() {
@@ -154,6 +162,22 @@ export function mountQuiz(root, deps = {}) {
     </section>`;
   }
 
+  function viewInterstitial(key) {
+    const data = INTERSTITIALS[key];
+    const paras = data.paragraphs.map((p) => `<p>${p}</p>`).join('');
+    const quote = data.quote ? `<p class="interstitial-quote">${data.quote}</p>` : '';
+    return `<section class="screen center interstitial" aria-labelledby="t-tela">
+      <h2 id="t-tela" class="hp">Uma pausa antes de continuar</h2>
+      ${divider(ICON.spark)}
+      ${paras}
+      ${quote}
+      <div class="nav-row" style="justify-content:center;margin-top:32px">
+        <button class="btn btn-outline" type="button" data-action="back-tela">Voltar</button>
+        <button class="btn" type="button" data-action="continue-tela">Continuar</button>
+      </div>
+    </section>`;
+  }
+
   function viewTie() {
     const { topPhaseIds } = computeScores(session.answers);
     const cards = topPhaseIds.map((id) => {
@@ -215,7 +239,7 @@ export function mountQuiz(root, deps = {}) {
         </div>
         <div class="hp" aria-hidden="true"><label for="f-website">Não preencha</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <label class="check"><input type="checkbox" name="marketing"> <span>Quero receber, por e-mail, conteúdos e novidades de Claudia Tilemann sobre a Jornada de Si. <em>(Opcional. Você recebe seu resultado mesmo sem marcar.)</em></span></label>
-        <div class="privacy"><p>Usamos seu e-mail para enviar este resultado. Suas respostas servem apenas para calcular o resultado e não ficam armazenadas. Você pode solicitar informações ou a exclusão dos seus dados a qualquer momento. <a href="privacidade.html" target="_blank" rel="noopener">Aviso de privacidade</a></p></div>
+        <div class="privacy"><p>Usamos seu e-mail para enviar este resultado. Suas respostas servem apenas para calcular o resultado e personalizar o e-mail, e não ficam armazenadas. Você pode solicitar informações ou a exclusão dos seus dados a qualquer momento. <a href="privacidade.html" target="_blank" rel="noopener">Aviso de privacidade</a></p></div>
         <button class="btn" type="submit" style="width:100%" ${status.sending ? 'disabled aria-busy="true"' : ''}>
           ${status.sending ? '<span class="spinner" aria-hidden="true"></span> Enviando seu resultado…' : (status.error ? 'Tentar enviar novamente' : 'Quero receber meu resultado')}
         </button>
@@ -243,7 +267,12 @@ export function mountQuiz(root, deps = {}) {
   }
 
   function render() {
-    const views = { intro: viewIntro, question: viewQuestion, tie: viewTie, form: viewForm, success: viewSuccess };
+    const views = {
+      intro: viewIntro, question: viewQuestion, tie: viewTie, form: viewForm, success: viewSuccess,
+      'tela-1': () => viewInterstitial('tela-1'),
+      'tela-2': () => viewInterstitial('tela-2'),
+      'tela-3': () => viewInterstitial('tela-3')
+    };
     root.innerHTML = (views[screen] || viewIntro)();
     if (screen === 'form') {
       const n = root.querySelector('#f-name');
@@ -284,6 +313,7 @@ export function mountQuiz(root, deps = {}) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          quizVersion: QUIZ_VERSION,
           answers: session.answers,
           choice: isTie ? session.choice : undefined,
           email: form.email,
@@ -319,6 +349,8 @@ export function mountQuiz(root, deps = {}) {
       if (session.current === 0) go('intro');
       else { session.current -= 1; go('question'); }
     }
+    else if (a === 'continue-tela') { go('question'); }
+    else if (a === 'back-tela') { session.current -= 1; go('question'); }
     else if (a === 'back-to-questions') { session.current = TOTAL_QUESTIONS - 1; go('question'); }
     else if (a === 'edit') { session.current = Number(el.dataset.index); go('question'); }
     else if (a === 'restart') { ev.preventDefault(); restart(); }
@@ -347,8 +379,14 @@ export function mountQuiz(root, deps = {}) {
     if (f === 'question') {
       const q = QUESTIONS[session.current];
       if (!session.answers[q.id]) return;
-      if (session.current < TOTAL_QUESTIONS - 1) { session.current += 1; go('question'); }
-      else afterLastQuestion();
+      const justAnswered = session.current;
+      if (session.current < TOTAL_QUESTIONS - 1) {
+        session.current += 1;
+        const tela = interstitialAfter(justAnswered);
+        go(tela || 'question');
+      } else {
+        afterLastQuestion();
+      }
     } else if (f === 'tie') {
       if (session.choice) go('form');
     } else if (f === 'lead') {

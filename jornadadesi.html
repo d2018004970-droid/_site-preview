@@ -30,8 +30,13 @@ src="https://www.facebook.com/tr?id=1135975485633606&ev=PageView&noscript=1"/>
 <link rel="icon" href="images/logo-topo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,600;0,700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  details[open] .faq-plus { transform: rotate(45deg); }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+</style>
 </head>
 <body>
 
@@ -52,302 +57,267 @@ src="https://www.facebook.com/tr?id=1135975485633606&ev=PageView&noscript=1"/>
 </header>
 <div class="header-spacer"></div>
 
-<section class="hero">
-  <div class="hero-photo" style="background-image:url('images/jornada/hero-janela.webp'); height:auto; min-height:640px;">
-    <div class="container">
-      <div class="hero-text">
-        <span class="eyebrow">Há quanto tempo...</span>
-        <h1 style="font-size:44px;">Você não se sente verdadeiramente você?</h1>
-        <div class="hero-divider">
-          <span class="line"></span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 5c-2.5 4.65-9.5 9-9.5 9z"/></svg>
-          <span class="line"></span>
-        </div>
-        <p class="lead">A Jornada de Si é um caminho guiado de 5 semanas para mulheres que passaram tanto tempo cuidando de todos, que esqueceram de si.</p>
-        <div class="hero-actions">
-          <a href="#comprar" class="btn">Quero voltar para mim</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div style="font-family: 'Montserrat', sans-serif; color: #392d3b; background: #fdfbf9; width: 100%; box-sizing: border-box">
+
+<!-- 1. TOPO -->
+<section style="background: #f9f3fa; overflow: hidden">
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 80px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">Jornada de Si · Cinco semanas · Claudia Tilemann, psicóloga</p>
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(36px, 5vw, 58px); line-height: 1.1; color: #392d3b">Você passou anos cuidando de todos. <em style="font-style: italic; color: #8a6790">Estas cinco semanas são suas.</em></h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #545060; max-width: 560px">Um percurso criado pela psicóloga Claudia Tilemann para você voltar a olhar para si. Uma fase por semana, cerca de 40 a 60 minutos, no seu ritmo. Você escreve só para você, sem precisar contar a sua história para ninguém.</p>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 8px">
+<a href="#comprar" style="display: inline-block; background: #8a6790; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.02em; padding: 18px 36px; border-radius: 40px; text-decoration: none; box-shadow: 0 6px 20px rgba(138,103,144,0.25)">Quero começar a minha Jornada</a>
+<p style="margin: 0; font-size: 13px; color: #545060">Acesso por 1 ano · 7 dias para pedir reembolso</p>
+</div>
+</div>
+<div style="flex: 1 1 320px; display: flex; justify-content: center">
+<figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px">
+<div style="width: 320px; max-width: 100%; height: 420px; border-radius: 200px 200px 16px 16px; overflow: hidden; border: 1px solid #d8c6dc; background: #ede5f6; box-shadow: 0 6px 20px rgba(57,45,59,0.06)">
+<img src="images/jornada/claudia.png" alt="Claudia Tilemann, psicóloga, sorrindo de braços cruzados" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block">
+</div>
+<figcaption style="text-align: center; font-size: 13px; color: #545060; line-height: 1.5"><strong style="color: #392d3b; font-weight: 600">Claudia Tilemann</strong><br>Psicóloga · CRP 14/10201</figcaption>
+</figure>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="container reveal" style="max-width:820px; text-align:center;">
-    <h2 style="font-weight:700;">O problema não é falta de força.<br><span style="color:var(--color-accent);">É excesso de sobrevivência.</span></h2>
-    <p style="font-size:17px; color:var(--color-text-soft);">Você ficou tão ocupada sustentando a vida de todos, que deixou de sustentar quem vive essa vida: você.</p>
-    <p style="font-weight:700; margin-top:32px;">Talvez você se identifique com algum desses sinais:</p>
-  </div>
-
-  <div class="container" style="max-width:980px; margin-top:24px;">
-    <div class="photo-overlay reveal" style="background-image:url('images/jornada/vaso-caneca.webp')">
-      <div class="photo-overlay-text">
-        <h3><span class="line-dark">Você vive</span><span class="line-accent">no piloto automático</span></h3>
-        <p>Os dias passam e você sente que está sempre apagando incêndios. Vive no modo "fazer", mas sem perceber como se sente.</p>
-      </div>
-    </div>
-    <div class="photo-overlay reveal" style="background-image:url('images/jornada/mulher-espelho.webp')">
-      <div class="photo-overlay-text">
-        <h3><span class="line-dark">Se cobra mais do que</span><span class="line-accent">acolhe a si mesma</span></h3>
-        <p>Você sente que nada do que faz é suficiente. Enquanto oferece compreensão para todos, esquece de ter a mesma gentileza consigo.</p>
-      </div>
-    </div>
-    <div class="photo-overlay reveal" style="background-image:url('images/jornada/mulher-retrato-moldura.webp')">
-      <div class="photo-overlay-text">
-        <h3><span class="line-dark">Já não reconhece</span><span class="line-accent">a mulher que era</span></h3>
-        <p>Você olha pra trás e sente falta daquela mulher cheia de sonhos, leveza e espontaneidade. Em algum momento, ela ficou escondida entre tantas responsabilidades.</p>
-      </div>
-    </div>
-    <div class="photo-overlay reveal" style="background-image:url('images/jornada/caderno-coracao.webp')">
-      <div class="photo-overlay-text">
-        <h3><span class="line-dark">Tem dificuldade de colocar</span><span class="line-accent">seus próprios limites</span></h3>
-        <p>Você diz "sim" quando gostaria de dizer "não". Tem medo de decepcionar os outros e acaba se deixando sempre para depois.</p>
-      </div>
-    </div>
-    <div class="photo-overlay reveal" style="margin-bottom:0; background-image:url('images/jornada/mulher-sofa.webp')">
-      <div class="photo-overlay-text">
-        <h3><span class="line-dark">Carrega tanto os outros, que</span><span class="line-accent">deixou de cuidar de si</span></h3>
-        <p>Você está sempre disponível para quem precisa. Mas, quando olha para a própria vida, percebe que faz muito tempo que ninguém cuidou de você.</p>
-      </div>
-    </div>
-  </div>
+<!-- 2. O PROBLEMA -->
+<section style="background: #fdfbf9">
+<div style="max-width: 760px; margin: 0 auto; padding: 96px 24px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.2; text-align: center">Você cuida de todo mundo. E de você, quem cuida?</h2>
+<div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0 10px" aria-hidden="true">
+<div style="width: 80px; height: 1px; background: #d9939a"></div>
+<svg width="22" height="20" viewBox="0 0 24 22" fill="none" stroke="#d9939a" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 5.8-8 11-8 11z"></path></svg>
+<div style="width: 80px; height: 1px; background: #d9939a"></div>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #545060">Você lembra da consulta da sua mãe, do material da escola, da conta que vence na sexta e do presente que ainda falta comprar. Resolve o que aparece, apaga um incêndio atrás do outro e ainda pensa no jantar.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #545060">Quando alguém pergunta como você está, você sorri e diz que está tudo bem. Porque alguém precisa ser forte, e quase sempre é você.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #545060">Até que um dia você se olha no espelho e pensa:</p>
+<p style="margin: 8px 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; line-height: 1.3; color: #8a6790; text-align: center">“Eu não sou mais a mesma de antes.”</p>
+</div>
+<div style="max-width: 1120px; margin: 0 auto; padding: 16px 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; text-align: center; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">Talvez você também se reconheça aqui</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Vivo no automático. Os dias passam e eu nem percebo.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Não sei nem do que eu gosto mais.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Tenho saudades de mim, da mulher que eu era.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Até quando descanso, sou eu que organizo tudo.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Quando eu preciso, ninguém aparece.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Eu deveria dar conta de tudo. E me cobro por não dar.</span></div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); display: flex; gap: 12px; align-items: flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span style="font-size: 16px; line-height: 1.5">Toda vez que penso em mim, a culpa vem junto.</span></div>
+</div>
+<p style="margin: 16px auto 0; max-width: 680px; text-align: center; font-size: 18px; line-height: 1.75; color: #545060">Se você marcou mais de uma, você não está exagerando. Muitas mulheres passaram tanto tempo cuidando de todos que esqueceram de si. Esse cansaço que mora na alma tem nome e tem história.</p>
+</div>
 </section>
 
-<section style="background:var(--color-bg-lavender-2); text-align:center;">
-  <div class="container reveal" style="max-width:720px;">
-    <h2 style="font-weight:700;">O maior risco<br><span style="color:var(--color-accent);">não é continuar cansada.</span></h2>
-    <p style="font-size:17px; color:var(--color-text-soft);">É olhar pra trás daqui a alguns anos e perceber que você passou tanto tempo <strong style="color:var(--color-text);">cuidando da vida de todos</strong>, que esqueceu de <strong style="color:var(--color-accent);">viver a sua</strong>.</p>
-  </div>
+<!-- FRASE DA MARCA -->
+<section style="background: #ede5f6">
+<div style="max-width: 900px; margin: 0 auto; padding: 72px 24px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(28px, 4vw, 42px); line-height: 1.25; color: #392d3b">O problema não é falta de força.<br><em style="color: #8a6790">É excesso de sobrevivência.</em></p>
+<p style="margin: 0; max-width: 620px; font-size: 17px; line-height: 1.7; color: #545060">Voltar para si não exige mudar de vida. Começa com pequenas pausas, boas perguntas e um tempo só seu. Foi pensando nisso que a Claudia criou a Jornada de Si.</p>
+</div>
 </section>
 
-<section>
-  <div class="container text-center">
-    <div class="section-intro reveal">
-      <h2>Imagine acordar e <span style="color:var(--color-accent);">perceber que...</span></h2>
-    </div>
-    <div class="outcomes-photo reveal" style="background-image:url('images/jornada/mulher-respirando.webp')">
-      <div class="outcomes-photo-items">
-        <div class="outcome-item">
-          <span class="outcome-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/></svg></span>
-          <p>Você voltou a confiar na sua própria voz</p>
-        </div>
-        <div class="outcome-divider"></div>
-        <div class="outcome-item">
-          <span class="outcome-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 5c-2.5 4.65-9.5 9-9.5 9z"/></svg></span>
-          <p>Consegue dizer "não" sem culpa</p>
-        </div>
-        <div class="outcome-divider"></div>
-        <div class="outcome-item">
-          <span class="outcome-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.2 3.8 21.5c2.9-.5 4.9-1.5 6.2-2.5"/><path d="M20.5 3.5C15 3.5 8 6.5 6 12.5c-1 3 1 5.5 3.5 5.5C17 18 21 12 21 5c0-.5-.2-1-.5-1.5z"/></svg></span>
-          <p>Entende melhor suas emoções</p>
-        </div>
-        <div class="outcome-divider"></div>
-        <div class="outcome-item">
-          <span class="outcome-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3c0 1-1 1-1 2s1 1 1 2"/><path d="M12 3c0 1-1 1-1 2s1 1 1 2"/></svg></span>
-          <p>Voltou a gostar da própria companhia</p>
-        </div>
-        <div class="outcome-divider"></div>
-        <div class="outcome-item">
-          <span class="outcome-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 3v2M12 19v2M4 12H2M22 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/></svg></span>
-          <p>Sente que existe, novamente</p>
-        </div>
-      </div>
-      <p class="outcomes-photo-caption"><span class="line-dark">É isso que a Jornada de Si</span><span class="line-accent">foi criada para construir.</span></p>
-    </div>
-  </div>
+<!-- 3. A JORNADA -->
+<section id="jornada" style="background: #fdfbf9">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="text-align: center; display: flex; flex-direction: column; gap: 16px; align-items: center">
+<p style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">A Jornada</p>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 44px); line-height: 1.2">Cinco semanas, uma fase por vez</h2>
+<p style="margin: 0; max-width: 680px; font-size: 18px; line-height: 1.7; color: #545060">Um percurso de reflexão e escrita em cinco fases. Cada fase leva uma semana e tem perguntas, exercícios e espaço para você escrever. Uma fase prepara a seguinte, então você sempre sabe o que fazer depois.</p>
+</div>
+
+<div style="background: #fef4f4; border: 1px dashed #d9939a; border-radius: 16px; padding: 22px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; justify-content: center; text-align: center">
+<span style="font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #a0565e">Antes de começar</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic">Onde estou agora?</span>
+<span style="font-size: 15px; color: #545060">Uma fotografia de como você está hoje, para no fim enxergar o caminho que fez.</span>
+</div>
+
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(196px, 1fr)); gap: 16px">
+<li style="background: #ffffff; border-radius: 16px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); overflow: hidden; display: flex; flex-direction: column"><div style="height: 8px; background: #D9939A"></div><div style="padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Roboto', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #545060">Semana 1 · Observar</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 26px; color: #392d3b">Raízes</h3><p style="margin: 0; font-size: 14px; font-weight: 600; color: #a0565e">O que reconheço da minha história</p><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060">Você olha para quem é hoje, para o seu mundo emocional e para as marcas que a sua história deixou.</p></div></li>
+<li style="background: #ffffff; border-radius: 16px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); overflow: hidden; display: flex; flex-direction: column"><div style="height: 8px; background: #A985AD"></div><div style="padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Roboto', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #545060">Semana 2 · Questionar</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 26px; color: #392d3b">Libertação</h3><p style="margin: 0; font-size: 14px; font-weight: 600; color: #7a5a80">O que começo a olhar de outra forma</p><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060">Você identifica as vozes do passado e a voz crítica que diz que você deveria dar conta de tudo, e abre espaço para o novo.</p></div></li>
+<li style="background: #ffffff; border-radius: 16px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); overflow: hidden; display: flex; flex-direction: column"><div style="height: 8px; background: #9EA88A"></div><div style="padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Roboto', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #545060">Semana 3 · Reconhecer</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 26px; color: #392d3b">Fortalecimento</h3><p style="margin: 0; font-size: 14px; font-weight: 600; color: #5b6648">O que reconheço sobre mim</p><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060">Você relembra suas conquistas, as qualidades que tem e o que é importante para você, separando o seu olhar do olhar dos outros.</p></div></li>
+<li style="background: #ffffff; border-radius: 16px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); overflow: hidden; display: flex; flex-direction: column"><div style="height: 8px; background: #E09F84"></div><div style="padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Roboto', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #545060">Semana 4 · Cuidar</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 26px; color: #392d3b">Acolhimento</h3><p style="margin: 0; font-size: 14px; font-weight: 600; color: #9a5538">Como desejo me tratar</p><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060">Você pensa na voz que oferece a si mesma, nos seus limites e em formas de cuidado que caibam na sua vida.</p></div></li>
+<li style="background: #ffffff; border-radius: 16px; box-shadow: 0 6px 20px rgba(57,45,59,0.06); overflow: hidden; display: flex; flex-direction: column"><div style="height: 8px; background: #A1A9C4"></div><div style="padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Roboto', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #545060">Semana 5 · Levar adiante</span><h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 26px; color: #392d3b">Visão de futuro</h3><p style="margin: 0; font-size: 14px; font-weight: 600; color: #535d82">O que desejo levar adiante</p><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060">Você reúne o que percebeu ao longo das semanas e decide o que quer levar com você daqui para frente.</p></div></li>
+</ol>
+
+<div style="background: #f9f3fa; border-radius: 24px; padding: 48px 40px; display: flex; flex-direction: column; gap: 32px">
+<h3 style="margin: 0; text-align: center; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 30px">Como funciona</h3>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px">
+<li style="display: flex; flex-direction: column; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid #a27da6; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; color: #8a6790">1</span><strong style="font-size: 16px; font-weight: 600">Você recebe o acesso na hora</strong><span style="font-size: 15px; line-height: 1.6; color: #545060">Depois da compra, a Hotmart envia o acesso por e-mail. Você baixa os PDFs e os áudios.</span></li>
+<li style="display: flex; flex-direction: column; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid #a27da6; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; color: #8a6790">2</span><strong style="font-size: 16px; font-weight: 600">Você escolhe onde escrever</strong><span style="font-size: 15px; line-height: 1.6; color: #545060">No PDF editável, na tela, ou na versão para impressão, no papel.</span></li>
+<li style="display: flex; flex-direction: column; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid #a27da6; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; color: #8a6790">3</span><strong style="font-size: 16px; font-weight: 600">Você faz uma fase por semana</strong><span style="font-size: 15px; line-height: 1.6; color: #545060">Cerca de 40 a 60 minutos, divididos como preferir. Dá para pausar e retomar quando precisar.</span></li>
+<li style="display: flex; flex-direction: column; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid #a27da6; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; color: #8a6790">4</span><strong style="font-size: 16px; font-weight: 600">Você guarda o que escreveu</strong><span style="font-size: 15px; line-height: 1.6; color: #545060">O acesso dura 1 ano, e os PDFs baixados continuam sendo seus.</span></li>
+</ol>
+<p style="margin: 0; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #8a6790">Você escreve só para você, sem precisar contar a sua história para ninguém.</p>
+</div>
+<div style="text-align: center"><a href="#comprar" style="display: inline-block; background: #8a6790; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.02em; padding: 18px 36px; border-radius: 40px; text-decoration: none">Quero começar a minha Jornada</a></div>
+</div>
 </section>
 
-<section style="background:var(--color-bg-lavender)">
-  <div class="container split-panel">
-    <div class="reveal">
-      <div class="split-panel-brand">
-        <img src="images/logo-topo.webp" alt="">
-        <span>Jornada de Si</span>
-      </div>
-      <ul class="bio-credentials" style="margin-top:0;">
-        <li>Ela não é um ebook.</li>
-        <li>Ela não é um diário.</li>
-        <li>Ela não é terapia.</li>
-      </ul>
-      <p class="intro-text" style="margin-top:20px;">Ela é um processo de reconexão construído por uma psicóloga, para conduzir você, passo a passo, de volta pra si.</p>
-      <p class="soft-text">Durante cinco semanas, você percorre um caminho cuidadosamente estruturado de perguntas, de escrita, reflexão e integração emocional.</p>
-      <p class="accent-text">Sem pressão. Sem fórmulas mágicas.<br>Sem precisar compartilhar sua história com ninguém.</p>
-    </div>
-    <div class="split-panel-img reveal">
-      <img src="images/jornada/caixa-produto.webp" alt="Caixa da Jornada de Si com flores secas">
-    </div>
-  </div>
+<!-- 4. QUEM CRIOU -->
+<section id="sobre" style="background: #fef4f4">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 300px; display: flex; justify-content: center">
+<div style="width: 320px; max-width: 100%; height: 420px; border-radius: 200px 200px 16px 16px; overflow: hidden; border: 1px solid #d8c6dc; box-shadow: 0 6px 20px rgba(57,45,59,0.08); background: #ede5f6">
+<img src="images/jornada/claudia.png" alt="Retrato da psicóloga Claudia Tilemann" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block">
+</div>
+</div>
+<div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #a0565e">Quem criou a Jornada</p>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.2">Uma psicóloga que também recomeçou</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.75; color: #545060">Eu sou a Claudia Tilemann, psicóloga (CRP 14/10201). Por muitos anos, trabalhei com eventos e hotelaria. Sou formada em Economia e construí minha carreira cuidando de pessoas, de detalhes e de tudo o que precisava dar certo. O desejo de estudar Psicologia ficou guardado esse tempo todo.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div style="background: #ffffff; border-radius: 16px; padding: 16px 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><span style="display: block; font-family: 'Playfair Display', serif; font-size: 32px; color: #8a6790; line-height: 1">56</span><span style="font-size: 13px; color: #545060">anos: voltei para a universidade</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 16px 22px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><span style="display: block; font-family: 'Playfair Display', serif; font-size: 32px; color: #8a6790; line-height: 1">60</span><span style="font-size: 13px; color: #545060">anos: me formei em Psicologia pela UFGD</span></div>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.75; color: #545060">Hoje atendo mulheres e ouço, toda semana, histórias parecidas com a sua. Mulheres que cuidaram de todos e, em algum momento, deixaram de se reconhecer. A Jornada de Si nasceu desse encontro entre a minha história, a minha formação e o que aprendi na clínica.</p>
+<blockquote style="margin: 8px 0 0; padding: 0 0 0 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 21px; line-height: 1.5; color: #392d3b">“Acredito que o autoconhecimento não acontece para encontrarmos uma versão perfeita de quem somos, mas para criarmos uma relação mais gentil, consciente e verdadeira conosco.”</blockquote>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="container text-center">
-    <div class="section-intro reveal">
-      <h2>Uma jornada de 5 semanas para te levar de volta para você</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-step reveal">
-        <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M12 10C12 10 7 10 7 5C7 5 12 5 12 10Z"/><path d="M12 10C12 10 17 10 17 5C17 5 12 5 12 10Z"/></svg></span>
-        <span class="week-num">Semana 1</span>
-        <h3>Raízes</h3>
-        <p>Você começa olhando para a mulher que foi.</p>
-      </div>
-      <div class="timeline-step reveal">
-        <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 17l-5.6 3.1 1.4-6.3-4.8-4.3 6.4-.6L12 3z"/></svg></span>
-        <span class="week-num">Semana 2</span>
-        <h3>Libertação</h3>
-        <p>Você aprende a soltar o que nunca foi seu.</p>
-      </div>
-      <div class="timeline-step reveal">
-        <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.2 3.8 21.5c2.9-.5 4.9-1.5 6.2-2.5"/><path d="M20.5 3.5C15 3.5 8 6.5 6 12.5c-1 3 1 5.5 3.5 5.5C17 18 21 12 21 5c0-.5-.2-1-.5-1.5z"/></svg></span>
-        <span class="week-num">Semana 3</span>
-        <h3>Fortalecimento</h3>
-        <p>Você redescobre sua própria voz.</p>
-      </div>
-      <div class="timeline-step reveal">
-        <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 5c-2.5 4.65-9.5 9-9.5 9z"/></svg></span>
-        <span class="week-num">Semana 4</span>
-        <h3>Acolhimento</h3>
-        <p>Você aprende a se tratar com a mesma gentileza que oferece aos outros.</p>
-      </div>
-      <div class="timeline-step reveal">
-        <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-1.2-2.4-3.7-4-6.5-4C4 4 3 5 3 6.8 3 9 4.5 11 8 11.5"/><path d="M12 8c1.2-2.4 3.7-4 6.5-4C20 4 21 5 21 6.8 21 9 19.5 11 16 11.5"/><path d="M12 7v13"/><path d="M12 12.5c-.8 1.8-3 3.2-5 3.2-1.3 0-2.2-.8-2.2-2 0-1.7 1.3-2.7 3-2.7 1.7 0 3.3.5 4.2 1.5"/><path d="M12 12.5c.8 1.8 3 3.2 5 3.2 1.3 0 2.2-.8 2.2-2 0-1.7-1.3-2.7-3-2.7-1.7 0-3.3.5-4.2 1.5"/></svg></span>
-        <span class="week-num">Semana 5</span>
-        <h3>Visão de futuro</h3>
-        <p>Você escolhe, conscientemente, a mulher que deseja continuar sendo.</p>
-      </div>
-    </div>
-    <a href="#comprar" class="btn" style="margin-top:48px;">Quero começar a minha reconexão</a>
-  </div>
+<!-- 5. PARA QUEM É -->
+<section style="background: #fdfbf9">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; text-align: center; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px)">Para quem é a Jornada</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<div style="background: #f9f3fa; border-radius: 16px; padding: 36px 32px; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 24px; color: #8a6790">É para você se…</h3>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55">
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você vive cheia de gente para cuidar e quase nenhum tempo sobra para você.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você tem filhos pequenos, trabalha fora e sente que pensa em tudo, o tempo todo, sozinha.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Seus filhos cresceram, a casa ficou diferente e você se pergunta quem é você agora.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você cuida da sua mãe ou do seu pai, e às vezes também dos filhos ou dos netos.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você mora sozinha e dá conta de tudo sem ter com quem dividir.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Seus dias estão organizados, mas parece que você vive no automático.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você quer um tempo só seu, com um passo a passo, sem precisar decidir por onde começar.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6790" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M20 6 9 17l-5-5"></path></svg><span>Você prefere algo reservado, no seu ritmo e sem expor a sua história.</span></li>
+</ul>
+</div>
+<div style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 36px 32px; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: 24px; color: #392d3b">Não é para você se…</h3>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55; color: #545060">
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0565e" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 12h12"></path></svg><span>Você procura uma solução rápida ou uma fórmula que resolva tudo em poucos dias.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0565e" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 12h12"></path></svg><span>Você quer algo espiritual ou ligado a energia feminina. A Jornada é um material de reflexão psicológica.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0565e" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 12h12"></path></svg><span>Você quer encontros ao vivo ou acompanhamento individual com a Claudia.</span></li>
+<li style="display: flex; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0565e" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 12h12"></path></svg><span>Você está procurando algo para substituir a terapia. A Jornada pode acompanhar uma terapia, mas não toma o lugar dela.</span></li>
+</ul>
+<div style="margin-top: 6px; background: #fef4f4; border-radius: 12px; padding: 18px 20px; font-size: 14px; line-height: 1.6; color: #392d3b">
+<strong style="font-weight: 600">Se você está passando por um momento de sofrimento intenso</strong>, o mais cuidadoso é procurar um psicólogo ou um serviço de saúde. Se precisar conversar agora, o CVV atende 24 horas pelo telefone 188 ou em <a href="https://cvv.org.br">cvv.org.br</a>.
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<section style="background:var(--color-bg-pink-soft)">
-  <div class="container">
-    <div class="section-intro reveal">
-      <span class="eyebrow">O que está incluso</span>
-      <h2>Tudo que você recebe na Jornada de Si</h2>
-    </div>
-  </div>
-  <div class="deliverables-photo reveal">
-    <img src="images/jornada/mockups-produto-crop3.webp" alt="Formatos inclusos: ebook, PDF editável, versão impressa, passaporte, mapa de si, áudios, playlists e bibliografia">
-    <div class="deliverables-textband">
-      <div style="left:6.7%; width:12.5%"><h4>Jornada de Si</h4><p>Ebook completo.</p></div>
-      <div style="left:20.4%; width:11%"><h4>PDF editável</h4><p>Para escrever quando e onde quiser.</p></div>
-      <div style="left:32.8%; width:11%"><h4>Versão impressão</h4><p>Para quem ama o cuidado do papel.</p></div>
-      <div style="left:47.4%; width:13%"><h4>Passaporte</h4><p>Um guia prático para guiar sua Jornada.</p></div>
-      <div style="left:62.4%; width:10.5%"><h4>Mapa de Si</h4><p>Para visualizar sua Jornada de transformação.</p></div>
-      <div style="left:73.9%; width:9%"><h4>Áudios exclusivos</h4><p>Reflexões guiadas para te acompanhar em cada etapa.</p></div>
-      <div style="left:83.7%; width:9%"><h4>Playlists</h4><p>Seleções musicais para cada momento da Jornada.</p></div>
-      <div style="left:94.8%; width:9.5%"><h4>Bibliografia</h4><p>Indicações que aprofundam a sua Jornada.</p></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="deliverables-labels">
-      <div>
-        <h4>Jornada de Si</h4>
-        <p>Ebook completo.</p>
-      </div>
-      <div>
-        <h4>PDF editável</h4>
-        <p>Para escrever quando e onde quiser.</p>
-      </div>
-      <div>
-        <h4>Versão impressão</h4>
-        <p>Para quem ama o cuidado do papel.</p>
-      </div>
-      <div>
-        <h4>Passaporte</h4>
-        <p>Um guia prático para guiar sua Jornada.</p>
-      </div>
-      <div>
-        <h4>Mapa de Si</h4>
-        <p>Para visualizar sua Jornada de transformação.</p>
-      </div>
-      <div>
-        <h4>Áudios exclusivos</h4>
-        <p>Reflexões guiadas para te acompanhar em cada etapa.</p>
-      </div>
-      <div>
-        <h4>Playlists</h4>
-        <p>Seleções musicais para cada momento da Jornada.</p>
-      </div>
-      <div>
-        <h4>Bibliografia</h4>
-        <p>Indicações que aprofundam a sua Jornada.</p>
-      </div>
-    </div>
-  </div>
+<!-- 6. O QUE INCLUI + COMPRA -->
+<section id="comprar" style="background: #f9f3fa">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">O que inclui</p>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.2">Tudo o que você recebe</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px">
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">As 5 fases da Jornada</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">Uma por semana, com perguntas, exercícios e espaço para escrever. 41 páginas.</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">PDF editável e versão para impressão</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">Para escrever na tela ou no papel, como preferir.</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">Passaporte</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">O guia prático que mostra o que fazer em cada semana.</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">Mapa de Si</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">Para enxergar o seu percurso do começo ao fim.</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">Áudios de reflexão guiada</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">Para os dias em que você preferir ouvir em vez de ler.</span></div>
+<div style="background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(57,45,59,0.06)"><strong style="display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px">1 ano de acesso</strong><span style="font-size: 14px; line-height: 1.55; color: #545060">Os PDFs que você baixar continuam sendo seus.</span></div>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060"><strong style="color: #392d3b; font-weight: 600">Para acompanhar:</strong> uma playlist para cada fase e uma bibliografia comentada, para quem quiser ir além.</p>
+</div>
+
+<div style="flex: 1 1 340px; min-width: 0; background: #ffffff; border-radius: 24px; padding: 40px 32px; box-shadow: 0 12px 36px rgba(57,45,59,0.10); border: 1px solid #e7dfe3; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+<img src="images/jornada/caixa-produto.webp" alt="Caixa da Jornada de Si com flores secas" style="width: 150px; border-radius: 8px; box-shadow: 0 10px 28px rgba(57,45,59,0.16); display: block">
+<p style="margin: 8px 0 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">Jornada de Si completa</p>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1; color: #392d3b">R$67</p>
+<p style="margin: 0; font-size: 15px; color: #545060">à vista ou 12x de R$6,93</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #545060; max-width: 280px">São cerca de R$13 por semana de um tempo só seu, e você tem 1 ano para fazer no seu ritmo.</p>
+<a href="https://pay.hotmart.com/F107023426R" style="display: block; width: 100%; box-sizing: border-box; background: #8a6790; color: #ffffff; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; padding: 18px 24px; border-radius: 40px; text-decoration: none; margin-top: 6px">Quero começar a minha Jornada</a>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #545060">7 dias para conhecer. Se não for o seu momento, você pede o reembolso.<br>Pagamento seguro pela Hotmart.</p>
+<p style="margin: 6px 0 0; padding-top: 14px; border-top: 1px solid #e7dfe3; font-size: 12px; line-height: 1.5; color: #545060">A Jornada é autoguiada e não substitui acompanhamento psicológico. Claudia Tilemann, psicóloga, CRP 14/10201.</p>
+</div>
+</div>
 </section>
 
-<section id="comprar">
-  <div class="container text-center">
-    <p class="eyebrow">O valor de tudo isso:</p>
-    <div class="price-box reveal">
-      <ul class="price-list">
-        <li><span>Jornada completa (5 semanas)</span><span>R$197</span></li>
-        <li><span>Áudios exclusivos</span><span>R$47</span></li>
-        <li><span>Mapa de Si</span><span>R$37</span></li>
-        <li><span>Playlists</span><span>R$37</span></li>
-        <li><span>Bibliografia comentada</span><span>R$57</span></li>
-      </ul>
-      <p class="price-old">Valor total separado: R$375</p>
-      <p style="margin:4px 0;">Hoje, tudo isso por apenas</p>
-      <div class="price-new">R$67</div>
-      <p class="price-installment">ou 12 x R$6,93</p>
-      <a href="https://pay.hotmart.com/F107023426R" class="btn btn-block" target="_blank" rel="noopener">Quero começar agora</a>
-      <p style="font-size:12px; color:var(--color-text-soft); margin-top:16px;">Pagamento 100% seguro via Hotmart</p>
-      <img src="images/jornada/selo-garantia.webp" alt="Garantia de 7 dias" class="guarantee-badge">
-      <p style="font-weight:700; margin-top:12px;">Garantia de 7 dias</p>
-      <p style="font-size:13px; color:var(--color-text-soft);">Leia. Explore. Escreva. Sinta. Se perceber que essa experiência realmente não fizer sentido para você, basta solicitar o reembolso dentro do prazo. Sem perguntas. Sem constrangimentos.</p>
-    </div>
-  </div>
+<!-- 7. POR DENTRO (no lugar dos depoimentos, até que existam) -->
+<section style="background: #fdfbf9">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px">
+<div style="text-align: center; display: flex; flex-direction: column; gap: 14px; align-items: center">
+<p style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6790">Por dentro da Jornada</p>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px)">Uma página da Jornada, para você conhecer</h2>
+<p style="margin: 0; max-width: 640px; font-size: 17px; line-height: 1.7; color: #545060">Antes da primeira fase, a Jornada pede que você pare e responda: onde estou agora? No fim das cinco semanas, você volta a essa página e enxerga o caminho que fez.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; align-items: start">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/jornada/capa.jpg" alt="Capa da Jornada de Si" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 28px rgba(57,45,59,0.12); display: block"><figcaption style="text-align: center; font-size: 14px; color: #545060">A capa do material</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/jornada/onde-estou.jpg" alt="Página Marco zero: Onde estou agora?, com três perguntas para escrever" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 28px rgba(57,45,59,0.12); display: block"><figcaption style="text-align: center; font-size: 14px; color: #545060">Marco zero: onde estou agora?</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/jornada/raizes-pagina.jpg" alt="Página do exercício Quem sou eu hoje?, da fase Raízes" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 28px rgba(57,45,59,0.12); display: block"><figcaption style="text-align: center; font-size: 14px; color: #545060">Raízes: quem sou eu hoje?</figcaption></figure>
+</div>
+</div>
 </section>
 
-<section style="background:var(--color-bg-lavender-2); text-align:center;">
-  <div class="container reveal" style="max-width:720px;">
-    <p style="font-family:var(--font-heading); font-size:28px; line-height:1.5;">Você não precisa encontrar uma nova versão de si.<br>Precisa apenas voltar para aquela que nunca deixou de existir.</p>
-  </div>
+<!-- 8. GARANTIA -->
+<section style="background: #fef4f4">
+<div style="max-width: 860px; margin: 0 auto; padding: 72px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 36px">
+<svg width="150" height="150" viewBox="0 0 150 150" role="img" aria-label="Selo: 7 dias para conhecer" style="flex: none">
+<circle cx="75" cy="75" r="70" fill="#ffffff" stroke="#d9939a" stroke-width="2"></circle>
+<circle cx="75" cy="75" r="60" fill="none" stroke="#d9939a" stroke-width="1" stroke-dasharray="3 4"></circle>
+<text x="75" y="80" text-anchor="middle" font-family="Playfair Display, serif" font-size="52" fill="#8a6790">7</text>
+<text x="75" y="104" text-anchor="middle" font-family="Roboto, sans-serif" font-size="11" letter-spacing="2.5" fill="#545060">DIAS</text>
+</svg>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(28px, 3.6vw, 38px)">Comece sem medo</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #545060">Você tem 7 dias para conhecer a Jornada. Comece por Raízes, faça a primeira atividade e veja se faz sentido para você.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #545060">Se perceber que não é o seu momento, peça o reembolso dentro do prazo, direto pela Hotmart. Sem perguntas e sem constrangimento.</p>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="container" style="max-width:760px;">
-    <div class="section-intro reveal">
-      <h2>Dúvidas frequentes</h2>
-    </div>
-
-    <details class="faq-item">
-      <summary>A Jornada de Si é um ebook?</summary>
-      <p>Não. A Jornada de Si é uma experiência guiada de reconexão pessoal. Você recebe um material estruturado para percorrer durante 5 semanas, com exercícios de reflexão, escrita e autoconhecimento que ajudam você a olhar para si com mais clareza e intenção.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Quanto tempo preciso dedicar por semana?</summary>
-      <p>Você não precisa passar horas fazendo a Jornada. A proposta foi criada para caber na vida real: você pode reservar um momento de aproximadamente 40 a 60 minutos por semana para realizar a etapa e, ao longo dos dias, voltar às reflexões sempre que sentir vontade.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Preciso imprimir os materiais?</summary>
-      <p>Não. Você escolhe a forma que funciona melhor para você. Pode preencher digitalmente, pelo PDF editável, ou imprimir para escrever à mão e transformar esse momento em um verdadeiro ritual de cuidado pessoal.</p>
-    </details>
-    <details class="faq-item">
-      <summary>A Jornada de Si substitui a terapia?</summary>
-      <p>Não, e essa é uma diferença importante. A Jornada de Si é uma experiência autoguiada de reflexão e reconexão pessoal. Ela pode complementar um processo terapêutico, mas não substitui o acompanhamento individual de uma psicóloga ou outro profissional de saúde mental.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Preciso saber escrever ou ter experiência com autoconhecimento?</summary>
-      <p>De jeito nenhum. Você não precisa escrever bonito, saber meditar ou já ter feito algum processo de autoconhecimento. As atividades foram pensadas para conduzir você passo a passo, mesmo que esteja começando agora.</p>
-    </details>
-    <details class="faq-item">
-      <summary>E se eu não conseguir acompanhar uma semana?</summary>
-      <p>Tudo bem. A Jornada não é uma prova. Você tem acesso ao material para fazer no seu ritmo e pode pausar, retomar uma reflexão ou voltar a uma etapa sempre que precisar. O objetivo não é fazer perfeito, é criar espaço para você.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Quando vou receber meu acesso?</summary>
-      <p>Assim que a compra for confirmada, você recebe as orientações de acesso ao material. A partir daí, você pode começar sua Jornada e escolher o melhor momento para dar o primeiro passo.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Por quanto tempo terei acesso?</summary>
-      <p>Você terá acesso à Jornada de Si por 1 ano. Durante esse período, você poderá acessar o conteúdo e percorrer as 5 semanas no seu ritmo, sem precisar ter pressa para concluir. E tem mais: os PDFs disponibilizados podem ser baixados por você e continuam sendo seus, mesmo após o término do período de acesso à Jornada. Assim, você pode guardar, imprimir e revisitar suas reflexões sempre que quiser.</p>
-    </details>
-  </div>
+<!-- 9. PERGUNTAS FREQUENTES -->
+<section style="background: #fdfbf9">
+<div style="max-width: 820px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px">
+<h2 style="margin: 0; text-align: center; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px)">Perguntas que costumam aparecer</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Eu quase não tenho tempo. Vou conseguir?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">A Jornada pede cerca de 40 a 60 minutos por semana, e você pode dividir esse tempo em pequenas atividades ao longo dos dias. Se uma semana for corrida, você pausa e retoma depois. Não é preciso mudar a sua rotina para começar.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Já comecei outras coisas e não terminei. E se acontecer de novo?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">A Jornada não é uma prova. Você tem 1 ano de acesso para fazer no seu ritmo, e os PDFs que baixar continuam sendo seus. Se parar no meio, é só voltar de onde parou.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Não sei por onde começar. Preciso ter experiência com autoconhecimento?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Não precisa. A Jornada começa por uma página simples, “Onde estou agora?”, e depois conduz você uma semana de cada vez. O Passaporte mostra o que fazer em cada fase.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Preciso escrever bem?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Não. Ninguém vai ler o que você escrever. Pode ser em tópicos, frases soltas ou poucas palavras. O que importa é o que faz sentido para você.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Sinto culpa quando penso em mim. Isso é egoísmo?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Reservar um tempo para você não tira nada de quem você ama. Dá para cuidar de você aos poucos, sem deixar de olhar os seus. Cuidar de si também é uma forma de continuar cuidando de quem está ao seu redor.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">E se as pessoas reagirem mal quando eu começar a me cuidar?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">A Jornada é feita no espaço reservado do seu caderno. Você não precisa anunciar nada nem mudar tudo de uma vez. Cada semana é um passo pequeno, no seu tempo.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Sozinha eu consigo?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Você faz no seu ritmo, mas o caminho já está traçado. Cada semana tem um passo definido, pensado por uma psicóloga, para você não precisar decidir sozinha o que fazer.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">O problema não sou eu, é a divisão das tarefas em casa. A Jornada ajuda?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">A sua sobrecarga é real, e a Jornada não promete mudar ninguém além de você. O que ela oferece é um tempo só seu e um espaço para entender por que você segura tanta coisa (na fase Libertação) e para encontrar a sua voz na hora de pedir e de dizer não (Fortalecimento e Acolhimento).</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Eu já assisto muitos vídeos sobre isso no YouTube. Qual a diferença?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Os vídeos acolhem e ajudam a dar nome ao que você sente. A Jornada é um processo em cinco fases, uma por semana, com exercícios em sequência e espaço para você escrever a sua própria história.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">A Jornada substitui a terapia?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Não. A Jornada é um material autoguiado de reflexão. Ela pode acompanhar uma terapia, mas não toma o lugar dela. Se você estiver passando por um momento de sofrimento intenso, procure um psicólogo ou um serviço de saúde.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">E se eu mexer em algo difícil durante os exercícios?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Algumas perguntas podem trazer lembranças ou sentimentos fortes. O material traz avisos de cuidado e você pode pular um exercício, fazer uma pausa ou voltar a ele outro dia. Se o desconforto ficar grande, vale buscar apoio profissional.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">É um ebook?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">O material tem 41 páginas, mas funciona como um percurso: cinco fases encadeadas, Passaporte, Mapa de Si, áudios de reflexão guiada e uma playlist para cada fase.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">A Jornada tem conteúdo religioso ou espiritual?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Não. É um material de reflexão psicológica, que respeita a fé e as crenças de cada mulher.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Como recebo o acesso?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Logo depois da compra, a Hotmart envia um e-mail com o acesso. Você baixa os PDFs e os áudios e pode usar no celular, no computador ou imprimir.</p></details>
+<details style="background: #ffffff; border: 1px solid #e7dfe3; border-radius: 16px; padding: 0 24px"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 600; font-size: 16px">Como peço o reembolso, se precisar?<span class="faq-plus" style="font-size: 24px; color: #8a6790; font-weight: 400; transition: transform 0.2s">+</span></summary><p style="margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: #545060">Dentro de 7 dias da compra, pela própria Hotmart, sem precisar explicar o motivo.</p></details>
+</div>
+</div>
 </section>
+
+<!-- 10. CHAMADA FINAL -->
+<section style="background: #ede5f6">
+<div style="max-width: 780px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4.2vw, 46px); line-height: 1.2">A primeira semana pode começar quando você decidir</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #545060">Não existe hora certa para voltar para si. Existe a primeira semana. Cinco fases, uma por vez, cerca de 40 a 60 minutos por semana, em um material criado por uma psicóloga para você fazer no seu ritmo.</p>
+<p style="margin: 12px 0 0; font-family: 'Playfair Display', serif; font-size: 40px; line-height: 1; color: #392d3b">R$67 <span style="font-family: 'Montserrat', sans-serif; font-size: 16px; color: #545060">ou 12x de R$6,93</span></p>
+<a href="https://pay.hotmart.com/F107023426R" style="display: inline-block; background: #8a6790; color: #ffffff; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; padding: 20px 40px; border-radius: 40px; text-decoration: none; box-shadow: 0 6px 20px rgba(138,103,144,0.25)">Quero começar a minha Jornada</a>
+<p style="margin: 0; font-size: 13px; color: #545060">Acesso por 1 ano · 7 dias para pedir reembolso</p>
+<div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 24px" aria-hidden="true">
+<div style="width: 80px; height: 1px; background: #a27da6"></div>
+<svg width="22" height="20" viewBox="0 0 24 22" fill="none" stroke="#a27da6" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 5.8-8 11-8 11z"></path></svg>
+<div style="width: 80px; height: 1px; background: #a27da6"></div>
+</div>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: #8a6790">O problema não é falta de força. É excesso de sobrevivência.</p>
+<p style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: #545060">Com carinho e respeito pelo seu processo,<br><span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; color: #392d3b">Claudia Tilemann</span><br>Psicóloga · CRP 14/10201</p>
+</div>
+</section>
+
+</div>
 
 <footer class="site-footer" id="contato">
   <div class="container">
@@ -384,6 +354,7 @@ src="https://www.facebook.com/tr?id=1135975485633606&ev=PageView&noscript=1"/>
       </div>
     </div>
     <div class="footer-bottom">
+      <p style="margin:0 0 10px; font-size:12px; line-height:1.7; color:rgba(255,255,255,.55);">A Jornada de Si é um material autoguiado de reflexão pessoal. Não é diagnóstico nem tratamento e não substitui acompanhamento psicológico. Em situação de crise, procure um serviço de saúde ou o CVV (188).</p>
       Copyright © Psicóloga Claudia Tilemann – Todos os direitos reservados.
       <a href="#">Termos de Uso</a> | <a href="politica-de-privacidade.html">Políticas de Privacidade</a> | <a href="politica-de-privacidade.html">Políticas de Cookies</a>
     </div>

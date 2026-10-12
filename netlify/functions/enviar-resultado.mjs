@@ -10,7 +10,7 @@
  *   RESEND_SEGMENT_ID  (opcional)   segmento do Resend para quem autorizar conteúdos futuros
  *   ALLOWED_ORIGINS    (opcional)   origens aceitas, separadas por vírgula
  */
-import { resolveResult, isValidEmail, QUESTIONS, getPhase } from '../../quiz/js/core.js';
+import { resolveResult, isValidEmail, QUESTIONS, getPhase, QUIZ_VERSION, getProfile } from '../../quiz/js/core.js';
 import { buildEmail, cleanName } from '../../quiz/js/email.js';
 import { createHash } from 'node:crypto';
 
@@ -49,6 +49,12 @@ export async function handle(req, env, fetchImpl = fetch) {
     return json(400, { ok: false, code: 'bad_json', message: 'Dados inválidos.' });
   }
 
+  // Recusa envios de uma versão antiga do quiz (configuração/pontuação pode
+  // ter mudado). Não envia e-mail nesse caso.
+  if (!body || body.quizVersion !== QUIZ_VERSION) {
+    return json(409, { ok: false, code: 'outdated', message: 'O quiz foi atualizado. Recarregue a página e responda novamente.' });
+  }
+
   // Campo-armadilha contra robôs: pessoas não o preenchem.
   if (body && typeof body.website === 'string' && body.website.trim() !== '') {
     return json(400, { ok: false, code: 'rejected', message: 'Não foi possível processar o envio.' });
@@ -74,7 +80,8 @@ export async function handle(req, env, fetchImpl = fetch) {
   }
 
   const to = email.trim();
-  const { subject, html, text } = buildEmail(result, cleanName(name));
+  const profile = getProfile(cleanAnswers);
+  const { subject, html, text, invitation } = buildEmail(result, profile, cleanName(name));
 
   const payload = { from: env.EMAIL_FROM, to: [to], subject, html, text };
   if (env.EMAIL_REPLY_TO) payload.reply_to = env.EMAIL_REPLY_TO;
@@ -134,7 +141,7 @@ export async function handle(req, env, fetchImpl = fetch) {
     }
   }
 
-  return json(200, { ok: true, id: data.id, phaseIds: result.phaseIds, mode: result.mode, marketing });
+  return json(200, { ok: true, id: data.id, phaseIds: result.phaseIds, mode: result.mode, invitation, marketing });
 }
 
 export default async (req) => handle(req, process.env);

@@ -1,25 +1,37 @@
 /**
  * Quiz "O que está pedindo mais atenção em você?" — Jornada de Si
  *
- * CONFIGURAÇÃO CENTRAL ÚNICA: fases, perguntas, alternativas, pontuação e
- * cálculo do resultado. Este arquivo é usado pela página do quiz, pela função
- * de envio de e-mail (servidor) e pelos testes automatizados. Não duplique a
- * lógica de pontuação em nenhum outro lugar.
+ * CONFIGURAÇÃO CENTRAL ÚNICA: fases, perguntas, alternativas, pontuação,
+ * telas intermediárias e cálculo do resultado. Este arquivo é usado pela
+ * página do quiz, pela função de envio de e-mail (servidor) e pelos testes
+ * automatizados. Não duplique a lógica de pontuação em nenhum outro lugar.
+ *
+ * VERSÃO 2 — resumo das mudanças em relação à versão 1:
+ *  - 10 perguntas: p2 a p6 pontuam a fase (1 ponto cada, 1 fase por opção);
+ *    p1, p7, p8, p9, p10 são de funil (não pontuam), servem para montar o
+ *    perfil usado na personalização do e-mail.
+ *  - 3 telas intermediárias (sem pontuação, apenas texto), que entram no
+ *    meio do fluxo: depois de p2, depois de p5 e depois de p6.
+ *  - QUIZ_VERSION identifica esta configuração; o servidor recusa envios
+ *    que não informem esta versão (ver netlify/functions/enviar-resultado.mjs).
  *
  * Regras:
- *  - cada alternativa tem optionId único, exatamente uma phaseId válida e
- *    points inteiro >= 0;
- *  - o cálculo usa apenas as respostas registradas (nada de nome, e-mail,
- *    horário, dispositivo ou aleatoriedade);
+ *  - cada alternativa de pergunta "fase" tem optionId único, exatamente uma
+ *    phaseId válida e points inteiro >= 0;
+ *  - cada alternativa de pergunta "funil" tem optionId único e uma tag;
+ *  - o cálculo da fase usa apenas as respostas das perguntas tipo "fase"
+ *    (nada de nome, e-mail, horário, dispositivo, respostas de funil ou
+ *    aleatoriedade);
  *  - empates nunca são desfeitos automaticamente.
  */
 
+export const QUIZ_VERSION = 2;
 export const OFFICIAL_URL = 'https://www.psiclaudiatilemann.com.br/jornadadesi';
 export const QUIZ_TITLE = 'O que está pedindo mais atenção em você?';
 export const TOTAL_QUESTIONS = 10;
 
 /* ------------------------------------------------------------------ */
-/* FASES OFICIAIS (nomes e ordem conforme site e material da Jornada)  */
+/* FASES OFICIAIS (nomes, descrições e atividades — usadas no e-mail)  */
 /* ------------------------------------------------------------------ */
 export const PHASES = [
   {
@@ -152,117 +164,137 @@ export const PHASES = [
 export const PHASE_IDS = PHASES.map((p) => p.id);
 
 /* ------------------------------------------------------------------ */
-/* PERGUNTAS E MAPEAMENTO ALTERNATIVA -> FASE -> PONTOS                */
-/* Todas as alternativas valem 1 ponto. Cada fase aparece em 8 das 10  */
-/* perguntas (pontuação máxima possível por fase: 8).                  */
+/* PERGUNTAS — p2 a p6 pontuam a fase; p1,p7,p8,p9,p10 são de funil     */
+/* (não pontuam, viram "profile" para personalizar o e-mail).          */
 /* ------------------------------------------------------------------ */
-const opt = (questionId, n, phaseId, text) => ({
+const faseOpt = (questionId, n, phaseId, text) => ({
   questionId,
   optionId: `${questionId}-${n}`,
   phaseId,
   points: 1,
   text
 });
+const funilOpt = (questionId, n, tag, text) => ({
+  questionId,
+  optionId: `${questionId}-${n}`,
+  tag,
+  text
+});
 
 export const QUESTIONS = [
   {
-    id: 'q1',
-    text: 'Quando você para e pensa na sua vida até aqui, o que mais chama a sua atenção?',
+    id: 'p1',
+    type: 'funil',
+    profile: 'rotina',
+    text: 'Como andam os seus dias?',
     options: [
-      opt('q1', 'a', 'raizes', 'Como eu me tornei quem sou hoje, com tudo o que já vivi.'),
-      opt('q1', 'b', 'libertacao', 'Algumas coisas que eu acredito sobre mim e que talvez nem sejam bem assim.'),
-      opt('q1', 'c', 'fortalecimento', 'Tudo o que eu já enfrentei e consegui, mesmo quando foi difícil.'),
-      opt('q1', 'd', 'acolhimento', 'O jeito como eu tenho me tratado no meio de tanta coisa.')
+      funilOpt('p1', 'a', 'corridos', 'Corridos, sempre apagando algum incêndio.'),
+      funilOpt('p1', 'b', 'cuidando', 'Cheios de gente para cuidar e com pouco tempo para mim.'),
+      funilOpt('p1', 'c', 'automatico', 'Organizados, mas parece que vivo no automático.'),
+      funilOpt('p1', 'd', 'falta-algo', 'Tranquilos, mas sinto falta de alguma coisa que não sei nomear.')
     ]
   },
   {
-    id: 'q2',
-    text: 'Tem alguma coisa do seu passado que ainda mexe com você?',
+    id: 'p2',
+    type: 'fase',
+    text: 'Quando foi a última vez que você fez algo só para você, sem culpa?',
     options: [
-      opt('q2', 'a', 'acolhimento', 'Momentos difíceis em que eu fui dura demais comigo.'),
-      opt('q2', 'b', 'raizes', 'Pessoas e situações que marcaram o jeito como eu me vejo.'),
-      opt('q2', 'c', 'visao-de-futuro', 'Sonhos que eu deixei para depois e que ainda me chamam.'),
-      opt('q2', 'd', 'libertacao', 'Coisas que eu ouvi sobre mim e que ainda ecoam na minha cabeça.')
+      faseOpt('p2', 'a', 'raizes', 'Nem lembro. Acho que até esqueci do que eu gosto.'),
+      faseOpt('p2', 'b', 'libertacao', 'Até faço, mas a culpa vem junto.'),
+      faseOpt('p2', 'c', 'acolhimento', 'Faz tempo. Sempre tem alguém precisando mais do que eu.'),
+      faseOpt('p2', 'd', 'visao-de-futuro', 'Faço às vezes, mas queria que isso fosse parte da minha vida, e não exceção.')
     ]
   },
   {
-    id: 'q3',
-    text: 'Qual dessas cobranças parece mais com as suas?',
+    id: 'p3',
+    type: 'fase',
+    text: 'Qual dessas frases você já pensou sobre si mesma?',
     options: [
-      opt('q3', 'a', 'libertacao', 'Aquela vozinha que aparece quando alguma coisa não sai como eu queria.'),
-      opt('q3', 'b', 'fortalecimento', 'Faço muito, mas sinto que nunca é o suficiente.'),
-      opt('q3', 'c', 'visao-de-futuro', 'Sinto que eu já deveria estar em outro ponto da vida.'),
-      opt('q3', 'd', 'raizes', 'Cobranças tão antigas que parecem fazer parte de mim.')
+      faseOpt('p3', 'a', 'raizes', '"Eu não sou mais a mesma de antes."'),
+      faseOpt('p3', 'b', 'libertacao', '"Eu deveria dar conta de tudo."'),
+      faseOpt('p3', 'c', 'fortalecimento', '"Nada do que eu faço é suficiente."'),
+      faseOpt('p3', 'd', 'acolhimento', '"Eu sempre fico para depois."')
     ]
   },
   {
-    id: 'q4',
-    text: 'O que você gostaria de enxergar mais em você?',
+    id: 'p4',
+    type: 'fase',
+    text: 'Quando alguém te pede algo que você não quer ou não pode fazer, você…',
     options: [
-      opt('q4', 'a', 'fortalecimento', 'As coisas boas que eu tenho e que, às vezes, nem percebo.'),
-      opt('q4', 'b', 'visao-de-futuro', 'O que eu ainda quero viver e para onde quero ir.'),
-      opt('q4', 'c', 'raizes', 'Partes de mim que foram ficando esquecidas na correria.'),
-      opt('q4', 'd', 'acolhimento', 'Do que eu preciso de verdade, e não só do que os outros precisam.')
+      faseOpt('p4', 'a', 'libertacao', 'Diz sim, com medo de decepcionar.'),
+      faseOpt('p4', 'b', 'acolhimento', 'Diz sim e depois fica sem tempo e sem energia para você.'),
+      faseOpt('p4', 'c', 'fortalecimento', 'Até diz não, mas fica insegura se fez certo.'),
+      faseOpt('p4', 'd', 'visao-de-futuro', 'Diz sim, mesmo sabendo que isso te afasta do que você quer para a sua vida.')
     ]
   },
   {
-    id: 'q5',
-    text: 'Quando a vida aperta, o que costuma te ajudar?',
+    id: 'p5',
+    type: 'fase',
+    text: 'O que mais pesa para você hoje?',
     options: [
-      opt('q5', 'a', 'acolhimento', 'Respirar e tentar ter um pouco mais de paciência comigo.'),
-      opt('q5', 'b', 'libertacao', 'Parar e me perguntar: será que é mesmo tão ruim quanto parece?'),
-      opt('q5', 'c', 'visao-de-futuro', 'Lembrar do que é importante para mim e pensar no próximo passo.'),
-      opt('q5', 'd', 'fortalecimento', 'Lembrar de outras vezes em que eu passei por algo parecido e consegui.')
+      faseOpt('p5', 'a', 'raizes', 'Sentir que me perdi de mim no meio de tantos papéis.'),
+      faseOpt('p5', 'b', 'fortalecimento', 'Não enxergar o quanto eu já fiz e do que sou capaz.'),
+      faseOpt('p5', 'c', 'acolhimento', 'O cansaço de cuidar de todo mundo e não ser cuidada.'),
+      faseOpt('p5', 'd', 'visao-de-futuro', 'Não saber direito para onde estou indo.')
     ]
   },
   {
-    id: 'q6',
-    text: 'E as suas vontades e necessidades, como ficam no dia a dia?',
+    id: 'p6',
+    type: 'fase',
+    text: 'Se daqui a algumas semanas algo tivesse mudado, o que você mais gostaria de sentir?',
     options: [
-      opt('q6', 'a', 'raizes', 'Às vezes eu nem percebo direito o que estou sentindo.'),
-      opt('q6', 'b', 'acolhimento', 'Até sei do que preciso, mas quase nunca sobra tempo para mim.'),
-      opt('q6', 'c', 'libertacao', 'Acabo pensando que as minhas coisas podem esperar.'),
-      opt('q6', 'd', 'fortalecimento', 'Fica mais fácil quando eu lembro do que me faz bem.')
+      faseOpt('p6', 'a', 'raizes', 'Que voltei a me reconhecer.'),
+      faseOpt('p6', 'b', 'libertacao', 'Mais leveza, sem tanta cobrança.'),
+      faseOpt('p6', 'c', 'fortalecimento', 'Confiança na minha própria voz.'),
+      faseOpt('p6', 'd', 'visao-de-futuro', 'Clareza do que eu quero daqui para frente.')
     ]
   },
   {
-    id: 'q7',
-    text: 'Em que momentos você sente que foi além do seu limite?',
+    id: 'p7',
+    type: 'funil',
+    profile: 'formato',
+    text: 'Para cuidar de você, o que faria mais sentido?',
     options: [
-      opt('q7', 'a', 'visao-de-futuro', 'Quando abraço tanta coisa que me afasto do que eu quero para mim.'),
-      opt('q7', 'b', 'raizes', 'Quando percebo que estou repetindo um jeito antigo de agir.'),
-      opt('q7', 'c', 'acolhimento', 'Quando digo "sim", mas por dentro queria dizer "não".'),
-      opt('q7', 'd', 'libertacao', 'Quando faço algo só para não decepcionar ninguém.')
+      funilOpt('p7', 'a', 'ritmo', 'Algo que eu faça no meu ritmo, sem horário marcado.'),
+      funilOpt('p7', 'b', 'passo-a-passo', 'Um passo a passo, para eu não ficar perdida.'),
+      funilOpt('p7', 'c', 'reservado', 'Algo reservado, sem precisar contar minha história para ninguém.'),
+      funilOpt('p7', 'd', 'nao-sei', 'Ainda não sei, quero entender melhor.')
     ]
   },
   {
-    id: 'q8',
-    text: 'Como você descreveria o seu momento agora?',
+    id: 'p8',
+    type: 'funil',
+    profile: 'tempo',
+    text: 'Quanto tempo por semana você conseguiria reservar para você?',
     options: [
-      opt('q8', 'a', 'fortalecimento', 'Dando conta de muita coisa, sem parar para reconhecer isso.'),
-      opt('q8', 'b', 'raizes', 'Sentindo muita coisa, mas sem saber bem o quê.'),
-      opt('q8', 'c', 'visao-de-futuro', 'Com vontade de mudar algo, mesmo sem saber direito o quê.'),
-      opt('q8', 'd', 'acolhimento', 'Cansada, precisando de um pouco mais de cuidado.')
+      funilOpt('p8', 'a', 'quase-nenhum', 'Hoje, quase nenhum.'),
+      funilOpt('p8', 'b', 'menos-30', 'Menos de 30 minutos.'),
+      funilOpt('p8', 'c', 'cerca-1h', 'Cerca de 1 hora.'),
+      funilOpt('p8', 'd', 'mais-1h', 'Mais de 1 hora.')
     ]
   },
   {
-    id: 'q9',
-    text: 'O que você gostaria de levar com você daqui para frente?',
+    id: 'p9',
+    type: 'funil',
+    profile: 'obstaculo',
+    text: 'O que mais costuma te impedir de cuidar de você?',
     options: [
-      opt('q9', 'a', 'libertacao', 'Mais leveza com os meus próprios pensamentos.'),
-      opt('q9', 'b', 'acolhimento', 'Mais carinho e paciência comigo mesma.'),
-      opt('q9', 'c', 'fortalecimento', 'Mais confiança em mim e no que eu acredito.'),
-      opt('q9', 'd', 'visao-de-futuro', 'Pequenos passos em direção à vida que eu quero.')
+      funilOpt('p9', 'a', 'tempo', 'Falta de tempo.'),
+      funilOpt('p9', 'b', 'culpa', 'Culpa por pensar em mim.'),
+      funilOpt('p9', 'c', 'nao-termino', 'Já comecei outras coisas e não terminei.'),
+      funilOpt('p9', 'd', 'por-onde-comecar', 'Não sei por onde começar.')
     ]
   },
   {
-    id: 'q10',
-    text: 'Se hoje você tivesse cinco minutinhos só para você, sobre o que gostaria de pensar?',
+    id: 'p10',
+    type: 'funil',
+    profile: 'prontidao',
+    text: 'Se existisse um caminho simples para voltar a olhar para você, você começaria?',
     options: [
-      opt('q10', 'a', 'raizes', 'Sobre quem eu sou, além de tudo o que eu faço pelos outros.'),
-      opt('q10', 'b', 'visao-de-futuro', 'Sobre o que eu quero ter mais na minha vida.'),
-      opt('q10', 'c', 'fortalecimento', 'Sobre algo que eu conquistei e que merece ser lembrado.'),
-      opt('q10', 'd', 'libertacao', 'Sobre um pensamento que anda pesando e que talvez não seja bem assim.')
+      funilOpt('p10', 'a', 'agora', 'Sim, estou precisando disso agora.'),
+      funilOpt('p10', 'b', 'se-couber', 'Sim, desde que caiba na minha rotina.'),
+      funilOpt('p10', 'c', 'talvez', 'Talvez, quero conhecer melhor antes.'),
+      funilOpt('p10', 'd', 'depois', 'Agora não, mas quero guardar para depois.')
     ]
   }
 ];
@@ -271,6 +303,43 @@ export const QUESTIONS = [
 export const OPTION_INDEX = Object.freeze(
   Object.fromEntries(QUESTIONS.flatMap((q) => q.options).map((o) => [o.optionId, o]))
 );
+
+/* ------------------------------------------------------------------ */
+/* TELAS INTERMEDIÁRIAS — sem pontuação, só texto. Entram no fluxo     */
+/* depois de p2 (tela-1), depois de p5 (tela-2) e depois de p6 (tela-3)*/
+/* ------------------------------------------------------------------ */
+export const INTERSTITIALS = {
+  'tela-1': {
+    afterQuestionId: 'p2',
+    paragraphs: [
+      'Se você se reconheceu, saiba que não está sozinha. Muitas mulheres passam tanto tempo cuidando de todos que esquecem de si.'
+    ],
+    quote: 'O problema não é falta de força. É excesso de sobrevivência.'
+  },
+  'tela-2': {
+    afterQuestionId: 'p5',
+    paragraphs: [],
+    quote: 'O maior risco não é continuar cansada. É olhar pra trás daqui a alguns anos e perceber que você passou tanto tempo cuidando da vida de todos, que esqueceu de viver a sua.'
+  },
+  'tela-3': {
+    afterQuestionId: 'p6',
+    paragraphs: [
+      'Voltar para si não exige mudar de vida. Começa com pequenas pausas, boas perguntas e um tempo só seu.',
+      'Foi pensando nisso que a psicóloga Claudia Tilemann criou a Jornada de Si: um caminho guiado de 5 semanas para mulheres que passaram tanto tempo cuidando de todos que esqueceram de si.'
+    ],
+    quote: null
+  }
+};
+
+/** Pelo índice (0-based) da pergunta recém-respondida, qual tela mostrar antes da próxima (ou null). */
+export function interstitialAfter(questionIndex) {
+  const q = QUESTIONS[questionIndex];
+  if (!q) return null;
+  for (const [key, v] of Object.entries(INTERSTITIALS)) {
+    if (v.afterQuestionId === q.id) return key;
+  }
+  return null;
+}
 
 export function getPhase(id) {
   return PHASES.find((p) => p.id === id) || null;
@@ -285,16 +354,32 @@ export function validateConfig() {
   if (PHASES.length !== 5) errors.push('Devem existir exatamente 5 fases.');
   if (new Set(PHASE_IDS).size !== PHASE_IDS.length) errors.push('IDs de fase duplicados.');
   if (QUESTIONS.length !== TOTAL_QUESTIONS) errors.push(`Devem existir ${TOTAL_QUESTIONS} perguntas.`);
+  const faseQuestions = QUESTIONS.filter((q) => q.type === 'fase');
+  if (faseQuestions.length !== 5) errors.push('Devem existir exatamente 5 perguntas do tipo "fase" (p2 a p6).');
   for (const q of QUESTIONS) {
+    if (!['fase', 'funil'].includes(q.type)) errors.push(`${q.id}: tipo inválido (${q.type}).`);
     if (q.options.length !== 4) errors.push(`${q.id}: deve ter 4 alternativas.`);
+    if (q.type === 'funil' && !q.profile) errors.push(`${q.id}: pergunta de funil sem "profile".`);
+    const phasesInQuestion = new Set();
     for (const o of q.options) {
       if (seen.has(o.optionId)) errors.push(`optionId duplicado: ${o.optionId}`);
       seen.add(o.optionId);
       if (o.questionId !== q.id) errors.push(`${o.optionId}: questionId incorreto.`);
-      if (!PHASE_IDS.includes(o.phaseId)) errors.push(`${o.optionId}: fase inválida (${o.phaseId}).`);
-      if (!Number.isInteger(o.points) || o.points < 0) errors.push(`${o.optionId}: pontuação inválida.`);
       if (!o.text || !o.text.trim()) errors.push(`${o.optionId}: texto vazio.`);
+      if (q.type === 'fase') {
+        if (!PHASE_IDS.includes(o.phaseId)) errors.push(`${o.optionId}: fase inválida (${o.phaseId}).`);
+        if (!Number.isInteger(o.points) || o.points < 0) errors.push(`${o.optionId}: pontuação inválida.`);
+        if (phasesInQuestion.has(o.phaseId)) errors.push(`${q.id}: fase repetida na mesma pergunta (${o.phaseId}).`);
+        phasesInQuestion.add(o.phaseId);
+      } else if (q.type === 'funil') {
+        if (!o.tag || !String(o.tag).trim()) errors.push(`${o.optionId}: tag vazia.`);
+      }
     }
+  }
+  // Cada fase deve aparecer em exatamente 4 das 5 perguntas "fase" (fica de fora de 1).
+  for (const phaseId of PHASE_IDS) {
+    const count = faseQuestions.filter((q) => q.options.some((o) => o.phaseId === phaseId)).length;
+    if (count !== 4) errors.push(`Fase "${phaseId}" aparece em ${count} perguntas de fase (esperado: 4).`);
   }
   return errors;
 }
@@ -304,7 +389,7 @@ export function validateConfig() {
 /* ------------------------------------------------------------------ */
 
 /**
- * answers: objeto { q1: 'q1-a', ..., q10: 'q10-d' }.
+ * answers: objeto { p1: 'p1-a', ..., p10: 'p10-d' }.
  * Lança erro se faltar resposta, se houver resposta inválida ou extra.
  */
 export function assertCompleteAnswers(answers) {
@@ -332,11 +417,12 @@ export function isComplete(answers) {
   }
 }
 
-/** Retorna { scores, max, topPhaseIds, isTie } de forma determinística. */
+/** Retorna { scores, max, topPhaseIds, isTie } de forma determinística. Usa só p2–p6. */
 export function computeScores(answers) {
   assertCompleteAnswers(answers);
   const scores = Object.fromEntries(PHASE_IDS.map((id) => [id, 0]));
   for (const q of QUESTIONS) {
+    if (q.type !== 'fase') continue;
     const option = OPTION_INDEX[answers[q.id]];
     scores[option.phaseId] += option.points;
   }
@@ -344,6 +430,21 @@ export function computeScores(answers) {
   // Ordem estável = ordem oficial das fases (apenas para exibição, nunca para desempate).
   const topPhaseIds = PHASE_IDS.filter((id) => scores[id] === max);
   return { scores, max, topPhaseIds, isTie: topPhaseIds.length > 1 };
+}
+
+/**
+ * Perfil de funil (p1, p7, p8, p9, p10) — usado só para personalizar o
+ * e-mail. Nunca influencia a fase. { rotina, formato, tempo, obstaculo, prontidao }
+ */
+export function getProfile(answers) {
+  assertCompleteAnswers(answers);
+  const profile = {};
+  for (const q of QUESTIONS) {
+    if (q.type !== 'funil') continue;
+    const option = OPTION_INDEX[answers[q.id]];
+    profile[q.profile] = option ? option.tag : undefined;
+  }
+  return profile;
 }
 
 /**
