@@ -1,8 +1,8 @@
 /**
- * Netlify Function TEMPORÁRIA: exporta todos os contatos do Resend junto
- * com as propriedades (fase do quiz, respostas de marketing) em um arquivo
- * CSV — algo que o próprio painel do Resend não oferece hoje (a exportação
- * de lá não inclui propriedades customizadas).
+ * Netlify Function: exporta todos os contatos do Resend junto com as
+ * propriedades (fase do quiz, respostas de marketing) em um arquivo CSV —
+ * algo que o próprio painel do Resend não oferece hoje (a exportação de lá
+ * não inclui propriedades customizadas).
  *
  * Protegida por um token guardado em uma variável de ambiente (EXPORT_TOKEN),
  * só para evitar que alguém que descubra a URL baixe a lista de contatos.
@@ -10,15 +10,18 @@
  * precisa de nenhuma chave nova).
  *
  * Variável de ambiente necessária (Netlify > Site configuration > Environment
- * variables):
+ * variables, marcada como "Contains secret values"):
  *   EXPORT_TOKEN   um valor secreto qualquer, escolhido por você.
  *
- * Como usar: depois do deploy, abra no navegador:
+ * Como usar (toda vez que quiser uma exportação atualizada): abra no
+ * navegador:
  *   https://psiclaudiatilemann.com.br/api/exportar-contatos?token=SEU_EXPORT_TOKEN
- * O navegador baixa um arquivo .csv com todos os contatos.
+ * O navegador baixa um arquivo .csv com todos os contatos, na hora. Vale a
+ * pena salvar esse link nos favoritos — pode ser usado quantas vezes quiser,
+ * sempre traz os dados mais recentes.
  *
- * IMPORTANTE: depois de usar, remova este arquivo do repositório e publique
- * de novo — ele não deve ficar disponível no site para sempre.
+ * Se algum dia quiser desativar a exportação, basta apagar a variável
+ * EXPORT_TOKEN no Netlify (sem ela, a função responde 503 para qualquer um).
  */
 
 const PROPERTY_KEYS = [
