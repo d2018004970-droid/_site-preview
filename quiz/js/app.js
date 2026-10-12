@@ -54,7 +54,7 @@ export function mountQuiz(root, deps = {}) {
   let session = load() || createSession();
   let screen = session.screen || 'intro';
   let form = { name: '', email: '', marketing: false };
-  let status = { sending: false, error: null, fieldError: null };
+  let status = { sending: false, error: null, fieldError: null, nameFieldError: null };
 
   function safeStorage() {
     try { return globalThis.sessionStorage || null; } catch { return null; }
@@ -92,7 +92,7 @@ export function mountQuiz(root, deps = {}) {
   function restart() {
     session = createSession();
     form = { name: '', email: '', marketing: false };
-    status = { sending: false, error: null, fieldError: null };
+    status = { sending: false, error: null, fieldError: null, nameFieldError: null };
     clearStore();
     go('intro');
   }
@@ -229,8 +229,9 @@ export function mountQuiz(root, deps = {}) {
       <form class="card" data-form="lead" novalidate>
         ${err}
         <div class="field">
-          <label for="f-name">Nome <span class="opt">(opcional)</span></label>
-          <input id="f-name" name="name" type="text" autocomplete="given-name" maxlength="60">
+          <label for="f-name">Nome</label>
+          <input id="f-name" name="name" type="text" autocomplete="given-name" maxlength="60" required aria-required="true" ${status.nameFieldError ? 'aria-invalid="true" aria-describedby="f-name-err"' : ''}>
+          ${status.nameFieldError ? `<p class="field-error" id="f-name-err">${status.nameFieldError}</p>` : ''}
         </div>
         <div class="field">
           <label for="f-email">E-mail</label>
@@ -285,10 +286,18 @@ export function mountQuiz(root, deps = {}) {
   /* ---------------- envio ---------------- */
   async function submitLead(formEl) {
     if (status.sending) return; // evita clique duplo
-    form.name = formEl.elements.name.value;
+    form.name = formEl.elements.name.value.trim();
     form.email = formEl.elements.email.value.trim();
     form.marketing = formEl.elements.marketing.checked;
     const website = formEl.elements.website.value;
+
+    if (!form.name) {
+      status.nameFieldError = 'Informe seu nome para receber seu resultado personalizado.';
+      render();
+      root.querySelector('#f-name')?.focus();
+      return;
+    }
+    status.nameFieldError = null;
 
     if (!isValidEmail(form.email)) {
       status.fieldError = 'Informe um e-mail válido para receber seu resultado.';
